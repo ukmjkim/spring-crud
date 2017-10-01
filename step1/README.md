@@ -1,4 +1,5 @@
 Step1: the first Spring4 MVC project
+(http://websystique.com/springmvc/spring-4-mvc-helloworld-tutorial-annotation-javaconfig-full-example/)
 
 Environment Setting and create a maven webapp project
 1. Start Eclipse, click on File > New > Maven Project
