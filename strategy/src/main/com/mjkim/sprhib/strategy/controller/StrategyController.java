@@ -14,7 +14,7 @@ import com.mjkim.sprhib.strategy.model.Strategy;
 import com.mjkim.sprhib.strategy.service.StrategyService;
 
 @Controller
-@RequestMapping(value = "/strategy")
+@RequestMapping("/")
 public class StrategyController {
 
 	@Autowired
