@@ -13,7 +13,7 @@ Step3: Spring 4 MVC + Hibernate 4 + MySQL + Maven integration
     * add HibernateConfiguration in configuration package (db configuration and transaction manager
     * add application.properties in resources (DB info - driver, user, password)
 
-3. configuration.AddConfig (servlet.xml)
+3. configuration.AppConfig (servlet.xml)
     * add views folder under WEB-INF
     * add message.properties in resources
 
