@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <user_profile id="1" TYPE="USER" />
+    <user_profile id="2" TYPE="DBA" />
+    <user_profile id="3" TYPE="ADMIN" />
+</dataset>
