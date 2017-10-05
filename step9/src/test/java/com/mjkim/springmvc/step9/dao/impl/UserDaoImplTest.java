@@ -20,7 +20,8 @@ public class UserDaoImplTest extends EntityDaoImplTest {
 		IDataSet dataSets[] = {
 			new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User.xml")),
 			new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("UserProfile.xml")),
-			new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User_UserProfile.xml"))
+			new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("User_UserProfile.xml")),
+			new FlatXmlDataSet(this.getClass().getClassLoader().getResourceAsStream("persistent_logins.xml"))
 		};
 		return new CompositeDataSet(dataSets);
 	}

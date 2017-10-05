@@ -18,6 +18,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.testng.Assert;
@@ -37,6 +41,15 @@ public class AppControllerTest {
 
 	@Mock
 	BindingResult result;
+
+	@Mock
+	UserDetails userDetails;
+
+	@Mock
+	Authentication authentication;
+
+	@Mock
+	SecurityContext securityContext;
 
 	@InjectMocks
 	AppController appController;
@@ -96,6 +109,10 @@ public class AppControllerTest {
 	public void editUser() {
 		User user = users.get(0);
 		when(userService.findBySSO(anyString())).thenReturn(user);
+		when(securityContext.getAuthentication()).thenReturn(authentication);
+		when(authentication.getPrincipal()).thenReturn(userDetails);
+		when(userDetails.getUsername()).thenReturn(user.getSsoId());
+		SecurityContextHolder.setContext(securityContext);
 		Assert.assertEquals(appController.editUser(anyString(), model), "registration");
 		Assert.assertNotNull(model.get("user"));
 		Assert.assertTrue((Boolean) model.get("edit"));
