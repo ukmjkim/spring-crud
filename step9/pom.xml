@@ -172,34 +172,20 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.20.1</version>
 				<configuration>
-					<!--skipTests>true</skipTests-->
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
+			<!-- mvn tomcat7:deploy -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.0.2</version>
-				<executions>
-					<execution>
-						<id>copy-installed</id>
-						<phase>install</phase>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-									<type>${project.packaging}</type>
-									<outputDirectory>/Users/MijungKimMacPro/Documents/apache-tomcat-8.0.44/webapps/</outputDirectory>
-									<destFileName>${project.artifactId}.${project.packaging}</destFileName>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<server>tomcatserver</server>
+					<path>/${project.artifactId}</path>
+					<update>true</update>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
