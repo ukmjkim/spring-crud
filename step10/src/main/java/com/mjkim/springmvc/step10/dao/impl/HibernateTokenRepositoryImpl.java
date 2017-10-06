@@ -43,13 +43,17 @@ public class HibernateTokenRepositoryImpl extends AbstractDao<String, Persistent
 	
 	public void removeUserTokens(String username) {
 		logger.info("Removing Token if any for user: {}", username);
-		PersistentLogin persistentLogin = (PersistentLogin) getEntityManager()
-                .createQuery("SELECT p FROM PersistentLogin p WHERE p.username = :username")
-                .setParameter("username", username)
-                .getSingleResult();
-		if (persistentLogin != null) {
-			logger.info("rememberMe was selected");
-			delete(persistentLogin);
+		try {
+			PersistentLogin persistentLogin = (PersistentLogin) getEntityManager()
+	                .createQuery("SELECT p FROM PersistentLogin p WHERE p.username = :username")
+	                .setParameter("username", username)
+	                .getSingleResult();
+			if (persistentLogin != null) {
+				logger.info("rememberMe was selected");
+				delete(persistentLogin);
+			}
+		} catch (Exception e) {
+			logger.info("Token not found...");
 		}
 	}
 	
